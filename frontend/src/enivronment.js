@@ -1,5 +1,5 @@
 const servers={
     dev:"http://localhost:8000",
-    peod:"https://gusiondaggercallsvideoappbackend.onrender.com"
+    prod:"https://gusiondaggercallsvideoappbackend.onrender.com"
 }
 export default servers;
