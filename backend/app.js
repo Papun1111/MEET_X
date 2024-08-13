@@ -15,11 +15,8 @@ app.use(express.json({limit:"40kb"}));
 app.use(express.urlencoded({limit:"40kb",extended:true}));
 app.use("/api/v1/users",userRoutes);
 
-app.get("/home",(req,res)=>{
-    res.send("hello world");
-});
-
 const start =async()=>{    
+    app.set("mongo_user");
     const connectionDb=await mongoose.connect("mongodb+srv://gohanmohapatra:iloveyou123@zoomcluster0.db3pk.mongodb.net/?retryWrites=true&w=majority&appName=ZoomCluster0");
 console.log("connected"+connectionDb.connection.host);
     server.listen(app.get("port"),()=>{
