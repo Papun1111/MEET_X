@@ -1,55 +1,211 @@
-/* history.css */
-
-/* Base Styling */
-body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #000000 0%, #333333 100%);
     color: #fff;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Card Styling */
-.MuiCard-root {
-    background-color: #1a1a1a;
-    border: 2px solid #00ffcc;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-    margin: 20px;
-    transition: transform 0.3s ease;
-}
-
-.MuiCard-root:hover {
+    overflow-x: hidden;
+  }
+  
+  /* Navigation bar */
+  .navBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .navBar h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #99e1d9;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navBar h2:hover {
+    color: #b8b8ff;
     transform: scale(1.05);
-    border-color: #ff00ff;
-}
-
-/* Typography Styling */
-.MuiTypography-root {
-    color: #dcdcdc; /* Light grey text */
-}
-
-.MuiTypography-colorTextSecondary {
-    color: #00ffcc; /* Teal text for secondary information */
-}
-
-/* Card Content */
-.MuiCardContent-root {
-    padding: 16px;
-}
-
-/* Button and Icons */
-.MuiButton-root, .MuiIconButton-root {
+  }
+  
+  .navBar p {
+    color: #dcdcdc;
+    margin-left: 8px;
+  }
+  
+  .navBar .MuiButton-root {
     color: #fff;
-    background: linear-gradient(135deg, #00ffcc 0%, #00bfff 100%);
+    border: 2px solid #99e1d9;
+    padding: 8px 16px;
     border-radius: 30px;
-    margin: 10px;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.MuiButton-root:hover, .MuiIconButton-root:hover {
-    background: linear-gradient(135deg, #ff00ff 0%, #f0e68c 100%);
+    background: rgba(153, 225, 217, 0.2);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navBar .MuiButton-root:hover {
+    background: linear-gradient(135deg, #99e1d9, #82cfd0);
+    border-color: #82cfd0;
     transform: scale(1.1);
-}
-
-/* Home Icon */
-.MuiSvgIcon-root {
-    font-size: 2rem; /* Larger icon size */
-}
+    color: #000;
+  }
+  
+  /* Meet Container */
+  .meetContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    height: calc(100vh - 80px);
+  }
+  
+  .leftPanel {
+    max-width: 50%;
+  }
+  
+  .leftPanel h2 {
+    font-size: 2.5rem;
+    color: #99e1d9;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .leftPanel h2:hover {
+    color: #b8b8ff;
+    transform: scale(1.05);
+  }
+  
+  .leftPanel div {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .MuiButton-contained {
+    background-color: #99e1d9;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .MuiButton-contained:hover {
+    background-color: #82cfd0;
+    transform: scale(1.1);
+    box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Text Field Styling */
+  .MuiTextField-root {
+    width: 100%;
+    max-width: 300px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+  }
+  
+  .MuiTextField-root .MuiInputBase-root {
+    color: #000;
+  }
+  
+  .MuiTextField-root .MuiOutlinedInput-root {
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .MuiTextField-root .MuiOutlinedInput-notchedOutline {
+    border-color: #99e1d9;
+  }
+  
+  .MuiTextField-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #82cfd0;
+  }
+  
+  .MuiTextField-root .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #b8b8ff;
+  }
+  
+  /* Right Panel Image */
+  .rightPanel img {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.7);
+    transform: scale(0.95);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .rightPanel img:hover {
+    transform: scale(1);
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.9);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .meetContainer {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    .leftPanel {
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+  
+    .rightPanel img {
+      max-width: 80%;
+    }
+  
+    .MuiButton-contained {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .meetContainer {
+      padding: 20px;
+    }
+  
+    .leftPanel h2 {
+      font-size: 2rem;
+    }
+  
+    .rightPanel img {
+      max-width: 70%;
+    }
+  }
+  /* General button styling with gradient */
+.MuiButton-root {
+    color: #fff; /* White text for visibility */
+    border: 2px solid transparent; /* Removing border for a sleeker look */
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #4b6cb7, #182848); /* Blue gradient */
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .MuiButton-root:hover {
+    background: linear-gradient(45deg, #6b8dde, #2a50a1); /* Slightly different blue gradient on hover */
+    transform: scale(1.1);
+  }
+  
+  /* Specific styling for the History button with a unique gradient */
+  .historyButton {
+    background: linear-gradient(45deg, #ffcc00, #ff6f00); /* Orange-yellow gradient */
+    color: #000; /* Black text for visibility */
+    border: 2px solid transparent;
+  }
+  
+  .historyButton:hover {
+    background: linear-gradient(45deg, #ffaa00, #ff5500); /* Darker orange-yellow gradient */
+    color: #fff; /* White text for contrast */
+    transform: scale(1.1);
+  }
+  
