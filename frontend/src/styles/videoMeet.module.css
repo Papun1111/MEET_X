@@ -1,9 +1,13 @@
+/* Updated meet page CSS */
+
+/* Main Video Container */
 .meetVideoContainer {
     position: relative;
     height: 100vh;
-    background: rgb(103, 2, 101);
+    background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
 }
 
+/* User Video - PIP (Picture-in-Picture) */
 .meetUserVideo {
     position: absolute;
     bottom: 10vh;
@@ -11,42 +15,81 @@
     width: auto;
     left: 0;
     border-radius: 20px;
+    border: 3px solid #00ffcc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
 }
 
+.meetUserVideo:hover {
+    transform: scale(1.05);
+}
+
+/* Button Container */
 .buttonContainers {
     position: absolute;
     width: 100vw;
     bottom: 0;
     text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
 }
 
 .buttonContainers svg {
     font-size: 3rem;
+    color: #00ffcc;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.conferenceView { 
+.buttonContainers svg:hover {
+    color: #ff00ff;
+    transform: scale(1.2);
+}
 
+/* Conference View */
+.conferenceView {
     display: flex;
-    
     padding: 10px;
     gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
-.conferenceView  video {
+.conferenceView video {
     width: 40vw;
     height: 20vh;
     min-width: 30vw;
     border-radius: 10px;
+    border: 3px solid #00ffcc;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 }
 
+.conferenceView video:hover {
+    transform: scale(1.05);
+    border-color: #ff00ff;
+}
+
+/* Chat Room */
 .chatRoom {
     position: absolute;
     height: 90vh;
     right: 0;
-    background: white;
+    background: #1a1a1a;
     border-radius: 10px;
     width: 30vw;
     padding-inline: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: 2px solid #00ffcc;
+}
+
+.chatRoom h3 {
+    color: #00ffcc;
+    margin-bottom: 10px;
+}
+
+.chatRoom p {
+    color: #dcdcdc;
 }
 
 .chatContainer {
@@ -54,11 +97,37 @@
     height: 100%;
 }
 
-
+/* Chat Area */
 .chattingArea {
     position: absolute;
     bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
 }
-.beforeConnect{
+
+/* Before Connect Background */
+.beforeConnect {
     background-image: url("https://i.etsystatic.com/22132378/r/il/37887c/2292886683/il_1588xN.2292886683_epcs.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.beforeConnect h1 {
+    font-size: 3rem;
+    color: #00ffcc;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.beforeConnect p {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-top: 10px;
 }

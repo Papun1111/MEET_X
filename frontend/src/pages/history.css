@@ -1,0 +1,55 @@
+/* history.css */
+
+/* Base Styling */
+body {
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Card Styling */
+.MuiCard-root {
+    background-color: #1a1a1a;
+    border: 2px solid #00ffcc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    margin: 20px;
+    transition: transform 0.3s ease;
+}
+
+.MuiCard-root:hover {
+    transform: scale(1.05);
+    border-color: #ff00ff;
+}
+
+/* Typography Styling */
+.MuiTypography-root {
+    color: #dcdcdc; /* Light grey text */
+}
+
+.MuiTypography-colorTextSecondary {
+    color: #00ffcc; /* Teal text for secondary information */
+}
+
+/* Card Content */
+.MuiCardContent-root {
+    padding: 16px;
+}
+
+/* Button and Icons */
+.MuiButton-root, .MuiIconButton-root {
+    color: #fff;
+    background: linear-gradient(135deg, #00ffcc 0%, #00bfff 100%);
+    border-radius: 30px;
+    margin: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.MuiButton-root:hover, .MuiIconButton-root:hover {
+    background: linear-gradient(135deg, #ff00ff 0%, #f0e68c 100%);
+    transform: scale(1.1);
+}
+
+/* Home Icon */
+.MuiSvgIcon-root {
+    font-size: 2rem; /* Larger icon size */
+}
