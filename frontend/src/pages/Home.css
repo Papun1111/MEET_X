@@ -18,20 +18,21 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
   
   .navBar h2 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #00ffcc;
+    color: #99e1d9;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
   }
   
   .navBar h2:hover {
-    color: #ff00ff;
+    color: #b8b8ff;
+    transform: scale(1.05);
   }
   
   .navBar p {
@@ -41,16 +42,17 @@
   
   .navBar .MuiButton-root {
     color: #fff;
-    border: 2px solid #00ffcc;
+    border: 2px solid #99e1d9;
     padding: 8px 16px;
     border-radius: 30px;
-    background: rgba(0, 255, 204, 0.2);
-    transition: background 0.3s ease, border-color 0.3s ease;
+    background: rgba(153, 225, 217, 0.2);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   }
   
   .navBar .MuiButton-root:hover {
-    background: linear-gradient(135deg, #00ffcc, #00bfff);
-    border-color: #00bfff;
+    background: linear-gradient(135deg, #99e1d9, #82cfd0);
+    border-color: #82cfd0;
+    transform: scale(1.1);
     color: #000;
   }
   
@@ -69,8 +71,14 @@
   
   .leftPanel h2 {
     font-size: 2.5rem;
-    color: #ff00ff;
+    color: #99e1d9;
     margin-bottom: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .leftPanel h2:hover {
+    color: #b8b8ff;
+    transform: scale(1.05);
   }
   
   .leftPanel div {
@@ -80,7 +88,7 @@
   }
   
   .MuiButton-contained {
-    background-color: #00ffcc;
+    background-color: #99e1d9;
     color: #000;
     padding: 10px 20px;
     border-radius: 30px;
@@ -89,17 +97,18 @@
   }
   
   .MuiButton-contained:hover {
-    background-color: #00bfff;
-    transform: scale(1.05);
+    background-color: #82cfd0;
+    transform: scale(1.1);
     box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.7);
   }
   
+  /* Text Field Styling */
   .MuiTextField-root {
     width: 100%;
     max-width: 300px;
-    background: #fff;
+    background: #f0f0f0;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     padding: 5px;
   }
   
@@ -109,30 +118,33 @@
   
   .MuiTextField-root .MuiOutlinedInput-root {
     border-radius: 8px;
+    transition: border-color 0.3s ease;
   }
   
   .MuiTextField-root .MuiOutlinedInput-notchedOutline {
-    border-color: #00ffcc;
+    border-color: #99e1d9;
   }
   
   .MuiTextField-root:hover .MuiOutlinedInput-notchedOutline {
-    border-color: #00bfff;
+    border-color: #82cfd0;
   }
   
   .MuiTextField-root .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: #ff00ff;
+    border-color: #b8b8ff;
   }
   
+  /* Right Panel Image */
   .rightPanel img {
     max-width: 100%;
     border-radius: 20px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.7);
     transform: scale(0.95);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
   
   .rightPanel img:hover {
     transform: scale(1);
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.9);
   }
   
   /* Responsive Styles */
