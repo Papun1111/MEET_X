@@ -25,7 +25,7 @@ function HomeComponent() {
 
                 <div style={{ display: "flex", alignItems: "center" }}>
 
-                    <Link to="/"><h2>Gusion Dagger Calls</h2></Link>
+                    <Link to="/" style={{textDecoration:"none"}}><h2>Gusion Dagger Calls</h2></Link>
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center" }}>

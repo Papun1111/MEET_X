@@ -36,7 +36,7 @@ export default function LandingPage() {
           </h1>
           <p>Cover a distance by Gusion dagger calls</p>
           <div role="button">
-            <Link to={"/auth"}>Get Started</Link>
+            <Link style={{textDecoration:"none"}} to={"/auth"}>Get Started</Link>
           </div>
         </div>
 
