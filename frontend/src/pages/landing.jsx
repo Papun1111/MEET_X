@@ -8,7 +8,7 @@ export default function LandingPage() {
     <div className="landingPageContainer">
       <nav>
         <div className="navHeader">
-          <h2>Gusion Dagger Calls</h2>
+          <h2>Blue Link Saga</h2>
         </div>
         <div className="navlist">
           <p onClick={()=>{
@@ -31,10 +31,9 @@ export default function LandingPage() {
       <div className="landingMainContainer">
         <div>
           <h1>
-            <span style={{ color: "#DA70D6" }}>Welcome</span> to Gusion Dagger
-            Calls
+            <span style={{ color: "#DA70D6" }}>Welcome</span> to Blue Link Saga
           </h1>
-          <p>Cover a distance by Gusion dagger calls</p>
+          <p>Cover a distance by Blue Link Saga</p>
           <div role="button">
             <Link style={{textDecoration:"none"}} to={"/auth"}>Get Started</Link>
           </div>
