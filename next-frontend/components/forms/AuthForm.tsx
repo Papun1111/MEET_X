@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { string } from "zod";
 
 type Props = {
   mode: "login" | "register";
@@ -26,8 +27,8 @@ export default function AuthForm({ mode, onSubmit }: Props) {
 
     try {
       await onSubmit({ name, username, password });
-    } catch (e: any) {
-      setError(e.message || "Something went wrong");
+    } catch (error) {
+      setError("Something went wrong");
     } finally {
       setBusy(false);
     }
