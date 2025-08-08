@@ -12,7 +12,6 @@ function App() {
 <>
 <Router>
   <AuthProvider>  <Routes>
-    {/* <Route path="/home" element=""></Route> */}
     <Route path="/" element={<LandingPage></LandingPage>}></Route>
     <Route path='/history' element={<History></History>}></Route>
     <Route path="/home" element={<HomeComponent></HomeComponent>}></Route>
