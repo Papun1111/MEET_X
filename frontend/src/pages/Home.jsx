@@ -114,7 +114,7 @@ function HomeComponent() {
       >
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link to="/" className="text-2xl font-bold text-cyan-400 hover:text-cyan-300 transition-all">
-            Blue Link Saga
+           MEET X
           </Link>
         </motion.div>
 

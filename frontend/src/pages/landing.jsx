@@ -1,23 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from "motion/react"; // Import motion from framer-motion
+import { motion } from "framer-motion";
 
 // --- Animation Variants ---
-// It's good practice to define variants outside the component
-// to prevent them from being redefined on every render.
+// Defined outside the component to prevent redefinition on every render.
 
-// Container variant for staggering child animations
+// Container variant for staggering the animation of its children
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, // Stagger the animation of children by 0.2s
+      staggerChildren: 0.2, // Animate children with a 0.2s delay between each
     },
   },
 };
 
-// Child item variant for text elements
+// Child item variant for animating text, buttons, and cards
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
@@ -25,131 +24,233 @@ const itemVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
+      ease: "easeOut",
     },
   },
 };
 
+// --- Data for Sections ---
+// Defining data outside the component is a good practice.
+const features = [
+  {
+    title: "Crystal-Clear Video",
+    description: "Experience high-definition video calls that make you feel like you're in the same room.",
+    icon: "📹",
+  },
+  {
+    title: "Real-Time Collaboration",
+    description: "Share your screen, use a virtual whiteboard, and edit documents together seamlessly.",
+    icon: "🤝",
+  },
+  {
+    title: "Secure & Private",
+    description: "End-to-end encryption ensures your conversations and data remain confidential.",
+    icon: "🔒",
+  },
+];
+
+const howToSteps = [
+    {
+        step: 1,
+        title: "Create an Account",
+        description: "Quick and easy registration to get you started in seconds."
+    },
+    {
+        step: 2,
+        title: "Start a Room",
+        description: "Create a new room and invite your team members with a single click."
+    },
+    {
+        step: 3,
+        title: "Begin Collaborating",
+        description: "Use our powerful tools to communicate and work together effectively."
+    }
+]
+
+
 export default function LandingPage() {
   const router = useNavigate();
-
+  const [loggedIn, setLoggedIn] = useState(false);
+  const handleLogout=()=>{
+    localStorage.removeItem("token");
+    setLoggedIn(false)
+  }
+  useEffect(() => {
+    // You can adjust the key as per your app logic ("user", "token", etc)
+    // For example, if your app saves "user" in localStorage after logging in:
+    const token=localStorage.getItem("token");
+    if(token){
+      setLoggedIn(true);
+    }else{
+      setLoggedIn(false);
+    }
+  }, [setLoggedIn]);
   return (
     <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden">
-      {/* Navbar */}
+      {/* --- Animated & Responsive Navbar --- */}
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="flex justify-between items-center px-6 py-4 bg-gray-900 shadow-md"
+        className="flex flex-col sm:flex-row justify-between items-center px-6 py-4 bg-gray-900 shadow-lg gap-4"
       >
         <div>
           <h2 className="text-2xl font-semibold text-blue-400">Blue Link Saga</h2>
         </div>
-        <div className="flex items-center gap-6 text-sm">
-          {/* Using motion.button for hover animations */}
+        <div className="flex items-center flex-wrap justify-center gap-4 text-sm md:gap-6">
+          {/* Buttons with hover animations */}
           <motion.button
             onClick={() => router("/asdad")}
-            className="hover:text-purple-400"
-            whileHover={{ scale: 1.1, y: -2 }} // Animate scale and position on hover
+            className="text-gray-300 hover:text-purple-400"
+            whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             Join as Guest
           </motion.button>
           <motion.button
             onClick={() => router("/auth")}
-            className="hover:text-purple-400"
-            whileHover={{ scale: 1.1, y: -2 }}
+            className="text-gray-300 hover:text-purple-400"
+            whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             Register
           </motion.button>
           <motion.button
             onClick={() => router("/home")}
-            className="hover:text-purple-400"
-            whileHover={{ scale: 1.1, y: -2 }}
+            className="text-gray-300 hover:text-purple-400"
+            whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             Home
           </motion.button>
+          {!loggedIn?
           <motion.button
             onClick={() => router("/auth")}
             className="px-4 py-1 bg-blue-600 text-white rounded"
-            whileHover={{ scale: 1.05, backgroundColor: "#2563EB" }} // Animate background color on hover
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
             Log In
-          </motion.button>
+          </motion.button>: <motion.button
+            onClick={handleLogout}
+            className="px-4 py-1 bg-red-600 text-white rounded"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            Logout
+          </motion.button>}
         </div>
       </motion.nav>
 
-      {/* Main Hero Section */}
-      <div className="flex flex-col lg:flex-row items-center justify-between px-10 py-20 gap-10">
-        {/* Left Side: Animated with variants */}
-        <motion.div
-          className="space-y-6 max-w-xl text-center lg:text-left"
-          variants={containerVariants}
-          initial="hidden" // Initial state
-          animate="visible" // Animate to this state
-        >
-          <motion.h1
-            variants={itemVariants} // Inherits animation from parent container
-            className="text-4xl lg:text-5xl font-bold leading-tight"
+      <main>
+        {/* --- Animated Main Hero Section --- */}
+        <section className="flex flex-col items-center justify-center px-6 md:px-10 py-20 text-center">
+          {/* Container for staggered animations */}
+          <motion.div
+            className="space-y-6 max-w-xl"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <span className="text-purple-400">Welcome</span> to Blue Link Saga
-          </motion.h1>
-          <motion.p variants={itemVariants} className="text-gray-300 text-lg">
-            Connect, collaborate, and communicate seamlessly. Blue Link Saga brings your team together, no matter the distance. Experience crystal-clear video calls and powerful sharing tools.
-          </motion.p>
-          <motion.div variants={itemVariants}>
-            <Link
-              to="/auth"
-              className="inline-block px-6 py-2 bg-purple-600 hover:bg-purple-700 rounded text-white text-base font-medium transition"
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl lg:text-5xl font-bold leading-tight"
             >
-              Get Started
-            </Link>
+              <span className="text-purple-400">Welcome</span> to Blue Link Saga
+            </motion.h1>
+            <motion.p
+              variants={itemVariants}
+              className="text-gray-300 text-lg"
+            >
+              Connect, collaborate, and communicate seamlessly. Blue Link Saga brings your team together, no matter the distance.
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <Link
+                to="/auth"
+                className="inline-block px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg text-white text-base font-medium transition-colors"
+              >
+                Get Started
+              </Link>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </section>
 
-        {/* Right Side Image: Animated */}
-        <motion.div
-          className="flex justify-center"
-          initial={{ x: 200, opacity: 0 }} // Start off-screen to the right and invisible
-          animate={{ x: 0, opacity: 1 }} // Animate to its final position
-          transition={{ duration: 0.8, ease: "easeOut" }}
+        {/* --- Features Section with Animated Cards --- */}
+        <motion.section 
+            className="py-20 px-6 md:px-10 bg-gray-900"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }} // Animate when 20% of the section is in view
+            variants={containerVariants}
         >
-          <img
-            src="/videocall.png"
-            alt="video call"
-            className="max-h-96 rounded-md shadow-lg"
-          />
-        </motion.div>
-      </div>
+            <motion.h2 variants={itemVariants} className="text-3xl lg:text-4xl font-bold text-center mb-12">
+                Features that Empower Your Team
+            </motion.h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                {features.map((feature, index) => (
+                    <motion.div
+                        key={index}
+                        className="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center"
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.05, borderColor: '#a855f7' }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <div className="text-4xl mb-4">{feature.icon}</div>
+                        <h3 className="text-xl font-semibold mb-2 text-purple-400">{feature.title}</h3>
+                        <p className="text-gray-400">{feature.description}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.section>
 
-      {/* NEW: Features Section */}
-      <motion.div
-        className="px-10 py-20 bg-gray-900"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }} // Animate when the element scrolls into view
-        viewport={{ once: true }} // Ensures the animation only runs once
-        transition={{ duration: 0.7, delay: 0.2 }}
-      >
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Why Choose <span className="text-blue-400">Blue Link Saga?</span>
-        </h2>
-        <div className="grid md:grid-cols-3 gap-10 text-center">
-          <div className="p-6 bg-gray-800 rounded-lg">
-            <h3 className="text-xl font-semibold text-purple-400 mb-2">HD Video & Audio</h3>
-            <p className="text-gray-400">Experience reliable, high-definition video and crisp audio that makes you feel like you're in the same room.</p>
-          </div>
-          <div className="p-6 bg-gray-800 rounded-lg">
-            <h3 className="text-xl font-semibold text-purple-400 mb-2">Real-time Collaboration</h3>
-            <p className="text-gray-400">Share your screen, use a virtual whiteboard, and send files instantly to keep productivity flowing.</p>
-          </div>
-          <div className="p-6 bg-gray-800 rounded-lg">
-            <h3 className="text-xl font-semibold text-purple-400 mb-2">Secure & Private</h3>
-            <p className="text-gray-400">With end-to-end encryption, your conversations and data are always protected and confidential.</p>
-          </div>
-        </div>
-      </motion.div>
+        {/* --- "How It Works" Instructions Section --- */}
+        <motion.section 
+            className="py-20 px-6 md:px-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
+        >
+            <motion.h2 variants={itemVariants} className="text-3xl lg:text-4xl font-bold text-center mb-12">
+                Get Started in 3 Easy Steps
+            </motion.h2>
+            <div className="flex flex-col lg:flex-row justify-center items-stretch gap-10 max-w-6xl mx-auto">
+                {howToSteps.map((step) => (
+                    <motion.div key={step.step} variants={itemVariants} className="flex flex-col items-center text-center lg:w-1/3">
+                        <div className="flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full text-2xl font-bold mb-4">
+                            {step.step}
+                        </div>
+                        <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                        <p className="text-gray-400">{step.description}</p>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.section>
+
+        {/* --- Final Call to Action Section --- */}
+        <motion.section 
+            className="bg-gray-900 py-20 px-6 md:px-10 text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={containerVariants}
+        >
+            <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-4">
+                Ready to Join the Saga?
+            </motion.h2>
+            <motion.p variants={itemVariants} className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+                Boost your team's productivity and collaboration today. It's free to get started.
+            </motion.p>
+            <motion.div variants={itemVariants}>
+                 <Link
+                    to="/auth"
+                    className="inline-block px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg text-white text-base font-medium transition-colors"
+                >
+                    Create Your Account Now
+                </Link>
+            </motion.div>
+        </motion.section>
+      </main>
     </div>
   );
 }
