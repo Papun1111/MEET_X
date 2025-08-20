@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link} from "react-router-dom";
 import { motion } from "framer-motion";
+import { Navbar } from "../components/navbar";
 
-// --- Animation Variants ---
-// Defined outside the component to prevent redefinition on every render.
 
-// Container variant for staggering the animation of its children
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, // Animate children with a 0.2s delay between each
+      staggerChildren: 0.2, 
     },
   },
 };
 
-// Child item variant for animating text, buttons, and cards
+
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
@@ -29,8 +27,7 @@ const itemVariants = {
   },
 };
 
-// --- Data for Sections ---
-// Defining data outside the component is a good practice.
+
 const features = [
   {
     title: "Crystal-Clear Video",
@@ -69,79 +66,11 @@ const howToSteps = [
 
 
 export default function LandingPage() {
-  const router = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(false);
-  const handleLogout=()=>{
-    localStorage.removeItem("token");
-    setLoggedIn(false)
-  }
-  useEffect(() => {
-    // You can adjust the key as per your app logic ("user", "token", etc)
-    // For example, if your app saves "user" in localStorage after logging in:
-    const token=localStorage.getItem("token");
-    if(token){
-      setLoggedIn(true);
-    }else{
-      setLoggedIn(false);
-    }
-  }, [setLoggedIn]);
+ 
   return (
     <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden">
       {/* --- Animated & Responsive Navbar --- */}
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="flex flex-col sm:flex-row justify-between items-center px-6 py-4 bg-gray-900 shadow-lg gap-4"
-      >
-        <div>
-          <h2 className="text-2xl font-semibold text-blue-400">Blue Link Saga</h2>
-        </div>
-        <div className="flex items-center flex-wrap justify-center gap-4 text-sm md:gap-6">
-          {/* Buttons with hover animations */}
-          <motion.button
-            onClick={() => router("/asdad")}
-            className="text-gray-300 hover:text-purple-400"
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            Join as Guest
-          </motion.button>
-          <motion.button
-            onClick={() => router("/auth")}
-            className="text-gray-300 hover:text-purple-400"
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            Register
-          </motion.button>
-          <motion.button
-            onClick={() => router("/home")}
-            className="text-gray-300 hover:text-purple-400"
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            Home
-          </motion.button>
-          {!loggedIn?
-          <motion.button
-            onClick={() => router("/auth")}
-            className="px-4 py-1 bg-blue-600 text-white rounded"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            Log In
-          </motion.button>: <motion.button
-            onClick={handleLogout}
-            className="px-4 py-1 bg-red-600 text-white rounded"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            Logout
-          </motion.button>}
-        </div>
-      </motion.nav>
-
+      <Navbar></Navbar>
       <main>
         {/* --- Animated Main Hero Section --- */}
         <section className="flex flex-col items-center justify-center px-6 md:px-10 py-20 text-center">
@@ -156,13 +85,13 @@ export default function LandingPage() {
               variants={itemVariants}
               className="text-4xl lg:text-5xl font-bold leading-tight"
             >
-              <span className="text-purple-400">Welcome</span> to Blue Link Saga
+              <span className="text-purple-400">Welcome</span> to Meet X
             </motion.h1>
             <motion.p
               variants={itemVariants}
               className="text-gray-300 text-lg"
             >
-              Connect, collaborate, and communicate seamlessly. Blue Link Saga brings your team together, no matter the distance.
+              Connect, collaborate, and communicate seamlessly. Meet X brings your team together, no matter the distance.
             </motion.p>
             <motion.div variants={itemVariants}>
               <Link
