@@ -257,7 +257,7 @@ export default function Authentication() {
                 ease: "easeInOut"
               }}
             >
-              Welcome to Blue Link Saga
+              Welcome to MEET X
             </motion.h1>
             <motion.p 
               className="text-lg opacity-90"
