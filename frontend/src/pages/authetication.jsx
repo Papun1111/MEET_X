@@ -8,7 +8,7 @@ export default function Authentication() {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
-  const [formState, setFormState] = useState(0); // 0 = Login, 1 = Register
+  const [formState, setFormState] = useState(0); 
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
